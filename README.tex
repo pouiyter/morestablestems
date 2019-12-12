@@ -1,0 +1,1068 @@
+\documentclass{amsart} 
+                       
+\usepackage[dvipsnames]{xcolor}
+\usepackage[pdf]{pstricks}
+%\usepackage[margin=1.5in, paperwidth=34in, paperheight=20in]{geometry}
+\usepackage{pst-plot}
+\usepackage{amsmath,amsthm,amssymb,amsrefs}     
+\usepackage{enumerate}   
+\usepackage{graphicx}   
+    
+
+
+\newcommand{\M}         {\mathbb{M}}
+\newcommand{\F}		    {\mathbb{F}}
+\newcommand{\C}         {\mathbb{C}}
+
+\newcommand{\ol}{\overline}
+\newcommand{\map}{\rightarrow}
+
+\DeclareMathOperator{\Ext}{Ext}
+
+\newenvironment{column}{\noindent \textit}{}
+\newenvironment{file}{\noindent \textbf}{}
+
+\setlength{\parskip}{\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title[Spectral sequence data files]
+{Data files for the algebraic Novikov, Adams, and Adams-Novikov
+spectral sequences}
+
+\author{Daniel C. Isaksen}
+\address{
+Department of Mathematics, 
+Wayne State University, 
+Detroit, MI 48202, USA}
+\email{isaksen@wayne.edu}
+
+\thanks{The first author was supported by NSF grant
+DMS-1606290. The third author was supported by NSF grant DMS-1810638.
+Many of the associated machine computations were performed on the
+Wayne State University Grid high performance computing cluster.}
+
+\author{Guozhen Wang}
+\address{Shanghai Center for Mathematical Sciences, Fudan University, Shanghai, China, 200433}
+\email{wangguozhen@fudan.edu.cn}
+
+\author{Zhouli Xu}
+\address{Department of Mathematics, Massachusetts Institute of Technology, Cambridge, MA 02139}
+\email{xuzhouli@mit.edu}
+
+\subjclass[2010]{55T15, 55Q45, 14F42}
+
+\keywords{algebraic Novikov spectral sequence, 
+Adams spectral sequence, Adams-Novikov spectral sequence,
+stable homotopy group,
+motivic stable homotopy group, cohomology of the Steenrod algebra}
+
+\begin{abstract}
+This document describes the structure of some comma-separated-value
+(CSV) files that contain detailed information about the algebraic
+Novikov, Adams, and Adams-Novikov spectral sequences, in both the
+classical and $\C$-motivic contexts.
+\end{abstract}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+This document describes the structure of some comma-separated-value
+(CSV) files that contain detailed information about the algebraic
+Novikov, Adams, and Adams-Novikov spectral sequences, in both the
+classical and $\C$-motivic contexts.
+These files are auxiliary to the projects described in
+\cite{IWX19b}, \cite{IWX19a}, \cite{IWX19c}, and \cite{IWX19d}.
+
+See the cited documents for more mathematical details.
+The remainder of this document describes the structure of the 
+CSV files.
+
+\newpage
+
+\section{Classical Adams spectral sequence}
+
+\file{Adams-classical-E2.csv:}
+Each line of the file corresponds to an element in the
+classical Adams $E_2$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.)
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{shift:} Used for display purposes
+in reference to the chart in \cite{IWX19c},
+when more than one element occurs with the same bidegree.
+Lower values correspond to dots on the left.
+
+\column{h0info:}
+Information about special behavior of an $h_0$ extension. \\
+\texttt{loc} means that an element is $h_0$-periodic. \\
+\texttt{p} means that an $h_0$ extension is not known to occur.
+
+\column{h0target:} Value of an $h_0$ extension.  An empty cell indicates
+that there is no $h_0$ extension.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension.
+
+\column{h2target:}
+Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension.
+
+\column{drinfo:}
+Information about an Adams differential.
+An integer value $r$ indicates a $d_r$ differential. \\
+\texttt{p} means that a differential is not known to occur.
+
+\column{drtarget:}
+Value of an Adams $d_r$ differential.
+
+\newpage
+
+\file{Adams-classical-Einfty.csv:}
+Each line of the file corresponds to an element in the
+classical Adams $E_\infty$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.)
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{shift:} Used for display purposes
+in reference to the chart in \cite{IWX19c},
+when more than one element occurs with the same bidegree.
+Lower values correspond to dots on the left.
+
+\column{h0info:}
+Information about special behavior of an $h_0$ extension. \\
+\texttt{loc} means that an element is $h_0$-periodic. \\
+\texttt{h} means that there is a hidden $2$ extension. \\
+\texttt{h ?} means that there is a possible hidden $2$ extension. \\
+\texttt{p} means that an $h_0$ extension is not known to occur.
+
+\column{h0target:} Value of an $h_0$ extension.  An empty cell indicates
+that there is no $h_0$ extension.
+
+\column{h1info:}
+Information about special behavior of an $h_1$ extension. \\
+\texttt{h} means that there is a hidden $\eta$ extension. \\
+\texttt{h ?} means that there is a possible hidden $\eta$ extension. \\
+\texttt{p} means that the $h_1$ extension is not known to occur.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension.
+
+\column{h2info:}
+Information about special behavior of an $h_2$ extension. \\
+\texttt{h} means that there is a hidden $\eta$ extension. \\
+\texttt{p} means that the $h_1$ extension is not known to occur.
+
+\column{h2target:}
+Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension.
+
+\column{drinfo:}
+Information about an Adams differential.
+An integer value $r$ indicates a $d_r$ differential. \\
+\texttt{p} means that the differential is not known to occur.
+
+\column{drtarget:}
+Value of an Adams $d_r$ differential.
+
+\newpage
+
+
+\file{Adams-classical-Einfty-extn.csv:}
+Each line of the file corresponds to a hidden extension by
+$2$, $\eta$, or $\nu$ in the
+classical Adams $E_\infty$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+
+\column{source:}  Source of an extension.
+(Beware that naming conventions have changed over time.)
+
+\column{type:} Type of extension. \\
+\texttt{h0} means an extension by $2$. \\
+\texttt{h1} means an extension by $\eta$. \\
+\texttt{h2} means an extension by $\nu$.
+
+\column{stem:} The stem of the source of an extension.  This is the
+horizontal coordinate in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+the source of an extension.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{info:} Information about special behavior of an extension. \\
+\texttt{?} means that an extension is not known to occur.
+
+\column{target:} Target of an extension.
+
+\column{sourcex, sourcey, targetx, targety}:
+Used for display purposes in reference to the chart in \cite{IWX19c},
+when a curved hidden extension is necessary.
+Gives the tangent vectors at the source and target.
+
+\newpage
+
+\section{$\C$-motivic Adams spectral sequence}
+
+\file{Adams-motivic-E2.csv:}
+Each line of the file corresponds to an element in the
+motivic Adams $E_2$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.)
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{tautorsion:} Indicates the $\tau$ module structure of an
+element. \\
+\texttt{0} means that an element is $\tau$-periodic. \\
+Any other integer $k$ means that an element is annihilated by $\tau^k$.
+
+\column{shift:} Used for display purposes
+in reference to the chart in \cite{IWX19c},
+when more than one element occurs with the same bidegree.
+Lower values correspond to dots on the left.
+
+\column{h0info:}
+Information about special behavior of an $h_0$ extension. \\
+\texttt{p} means that an $h_0$ extension is not known to occur.
+\texttt{t} means that an $h_0$ extension equals $\tau$ times an element. \\
+\texttt{t} followed by an integer $k$ means that an $h_0$ extension
+equals $\tau^k$ times an element.
+
+\column{h0target:} Value of an $h_0$ extension.  An empty cell indicates
+that there is no $h_0$ extension. \\
+\texttt{loc} means that an element is $h_0$-periodic.
+
+\column{h1info:}
+Information about special behavior of an $h_1$ extension. \\
+\texttt{p} means that an $h_1$ extension is not known to occur.
+\texttt{t} means that an $h_1$ extension equals $\tau$ times an element. \\
+\texttt{t} followed by an integer $k$ means that an $h_1$ extension
+equals $\tau^k$ times an element.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension. \\
+\texttt{loc} means that an element is $h_1$-periodic.
+
+\column{h2info:}
+Information about special behavior of an $h_2$ extension. \\
+\texttt{p} means that an $h_2$ extension is not known to occur.
+\texttt{t} means that an $h_2$ extension equals $\tau$ times an element. \\
+\texttt{t} followed by an integer $k$ means that an $h_2$ extension
+equals $\tau^k$ times an element.
+
+\column{h2target:}
+Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension.
+
+\column{drinfo:}
+Information about an Adams $d_2$ differential. \\
+\texttt{free} means that the target of the differential is not displayed
+on the chart, typically because it is $h_1$-periodic. \\
+\texttt{p} means that a differential is not known to occur. \\
+\texttt{t} means that a differential equals $\tau$ times an element. \\
+\texttt{t} followed by an integer $k$ means that a differential
+equals $\tau^k$ times an element.
+
+\column{drtarget:}
+Value of an Adams $d_2$ differential.
+
+\newpage
+
+\file{Adams-motivic-E3.csv:}
+Each line of the file corresponds to an element in the
+motivic Adams $E_3$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+This file takes the same format as
+\textbf{Adams-motivic-E2.csv}.
+
+
+\file{Adams-motivic-E4.csv:}
+Each line of the file corresponds to an element in the
+motivic Adams $E_4$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+This file takes the same format as
+\textbf{Adams-motivic-E2.csv}.
+
+\file{Adams-motivic-E5.csv:}
+Each line of the file corresponds to an element in the
+motivic Adams $E_5$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+This file takes the same format as
+\textbf{Adams-motivic-E2.csv}.
+
+\file{Adams-motivic-E6.csv:}
+Each line of the file corresponds to an element in the
+motivic Adams $E_6$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+This file takes the same format as
+\textbf{Adams-motivic-E2.csv}.
+
+\file{Adams-motivic-Einfty.csv:}
+Each line of the file corresponds to an element in the
+motivic Adams $E_\infty$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+This file takes the same format as
+\textbf{Adams-motivic-E2.csv}.
+
+\newpage
+
+
+\file{Adams-motivic-Einfty-extn.csv:}
+Each line of the file corresponds to a hidden extension by
+$\tau$ in the
+$\C$-motivic Adams $E_\infty$-page.  This data is used to produce the
+chart appearing in \cite{IWX19c}.
+
+\column{source:}  Source of an extension.
+(Beware that naming conventions have changed over time.)
+
+\column{stem:} The stem of the source of an extension.  This is the
+horizontal coordinate in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+the source of an extension.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{info:} Information about special behavior of an extension. \\
+\texttt{?} means that an extension is not known to occur.
+
+\column{target:} Target of an extension.
+
+\column{sourcex, sourcey, targetx, targety}:
+Used for display purposes in reference to the chart in \cite{IWX19c},
+when a curved hidden extension is necessary.
+Gives the tangent vectors at the source and target.
+
+\newpage
+
+\section{Adams-Novikov spectral sequence}
+
+\file{ANSS-v1periodic-E2.csv:}
+Each line of the file corresponds to a $v_1$-periodic element in the 
+Adams-Novikov $E_2$-page.
+This data is used to produce the chart appearing in
+\cite{IWX19d}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.) 
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams-Novikov chart.
+
+\column{Adams-Novikov filtration:} The Adams-Novikov filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams-Novikov chart.
+
+\column{order:} $\log_2$ of the order of an element.
+
+\column{h1info:}
+Information about special behavior of an $h_1$ extension. \\
+\texttt{loc} means that an element is $h_1$-periodic.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension.
+
+\column{h2target:}
+Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension.
+
+\column{drinfo:}
+Information about an Adams-Novikov differential. \\
+An integer $r$ means that there is a $d_r$ differential.
+
+\column{drtarget:}
+Value of an Adams-Novikov differential.
+
+\newpage
+
+\file{ANSS-v1periodic-Einfty.csv:}
+Each line of the file corresponds to a $v_1$-periodic element in the 
+Adams-Novikov $E_\infty$-page.
+This data is used to produce the chart appearing in
+\cite{IWX19d}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.) 
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams-Novikov chart.
+
+\column{Adams-Novikov filtration:} The Adams-Novikov filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams-Novikov chart.
+
+\column{order:} $\log_2$ of the order of an element.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension.
+
+\column{h2target:}
+Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension.
+
+\newpage
+
+
+\file{ANSS-v1periodic-Einfty-extn.csv:}
+Each line of the file corresponds to a hidden extension
+between $v_1$-periodic elements in the
+Adams-Novikov $E_\infty$-page.  This data is used to produce the
+chart appearing in \cite{IWX19d}.
+
+\column{source:}  Source of an extension.
+(Beware that naming conventions have changed over time.)
+
+\column{type:} Type of extension. \\
+\texttt{h0} means an extension by $2$. \\
+
+\column{stem:} The stem of the source of an extension.  This is the
+horizontal coordinate in a standard Adams-Novikov chart.
+
+\column{Adams-Novikov filtration:} The Adams-Novikov filtration of 
+the source of an extension.  This is the vertical coordinate in a standard 
+Adams-Novikov chart.
+
+\column{target:} Target of an extension.
+
+\newpage
+
+\file{ANSS-E2.csv:}
+Each line of the file corresponds to an element in the
+Adams-Novikov $E_2$-page, excluding $v_1$-periodic elements.
+This data is used to produce the
+chart appearing in \cite{IWX19d}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.)
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams-Novikov chart.
+
+\column{Adams-Novikov filtration:} The Adams-Novikov filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams-Novikov chart.
+
+\column{order:} $\log_2$ of the order of an element.
+
+\column{shift:} Used for display purposes
+in reference to the chart in \cite{IWX19d},
+when more than one element occurs with the same bidegree.
+Lower values correspond to dots on the left.
+
+\column{h1info:}
+Information about special behavior of an $h_1$ extension. \\
+An integer $k$ means that the $h_1$ extension equals
+$2^k$ times a generator.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension.
+
+\column{h2info:}
+Information about special behavior of an $h_2$ extension. \\
+An integer $k$ means that the $h_2$ extension equals
+$2^k$ times a generator.
+
+\column{h2target:}
+Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension.
+
+\column{drinfo:}
+Information about an Adams-Novikov differential. \\
+An integer $r$ means that there is a $d_r$-differential. \\
+\texttt{?} means that a differential is not known to occur.
+
+\column{drtarget:}
+Value of an Adams-Novikov differential.
+
+\newpage
+
+\file{ANSS-E4.csv:}
+Each line of the file corresponds to an element in the
+Adams-Novikov $E_4$-page, excluding $v_1$-periodic elements.
+This data is used to produce the
+chart appearing in \cite{IWX19d}.
+This file takes the same format as
+\textbf{ANSS-E2.csv}.
+
+\file{ANSS-E6.csv:}
+Each line of the file corresponds to an element in the
+Adams-Novikov $E_6$-page, excluding $v_1$-periodic elements.
+This data is used to produce the
+chart appearing in \cite{IWX19d}.
+This file takes the same format as
+\textbf{ANSS-E2.csv}.
+
+\file{ANSS-Einfty.csv:}
+Each line of the file corresponds to an element in the
+Adams-Novikov $E_\infty$-page, excluding $v_1$-periodic elements.
+This data is used to produce the
+chart appearing in \cite{IWX19d}.
+This file takes the same format as
+\textbf{ANSS-E2.csv}.
+
+\newpage
+
+\file{ANSS-Einfty-extn.csv:}
+Each line of the file corresponds to a hidden extension by
+$2$, $\eta$, or $\nu$
+in the Adams-Novikov $E_\infty$-page.  This data is used to produce the
+chart appearing in \cite{IWX19d}.
+
+\column{source:}  Source of an extension.
+(Beware that naming conventions have changed over time.)
+
+\column{type:} Type of extension. \\
+\texttt{h0} means an extension by $2$. \\
+\texttt{h1} means an extension by $\eta$. \\
+\texttt{h2} means an extension by $\nu$.
+
+\column{stem:} The stem of the source of an extension.  This is the
+horizontal coordinate in a standard Adams-Novikov chart.
+
+\column{Adams-Novikov filtration:} The Adams-Novikov filtration of 
+the source of an extension.  This is the vertical coordinate in a standard 
+Adams-Novikov chart.
+
+\column{info:} Information about special behavior of an extension. \\
+\texttt{?} means that an extension is not known to occur.
+
+\column{target:} Target of an extension.
+
+\column{sourcex, sourcey, targetx, targety}:
+Used for display purposes in reference to the chart in \cite{IWX19d},
+when a curved hidden extension is necessary.
+Gives the tangent vectors at the source and target.
+
+\newpage
+
+\section{$h_1$-Bockstein spectral sequence for the 
+algebraic Novikov $E_2$-page}
+
+\file{algNovikov-h1periodic-E0.csv}
+Each line of the file corresponds to an element in the
+$E_0$-page of the 
+$h_1$-Bockstein spectral sequence that converges to part of the
+algebraic Novikov $E_2$-page.
+This data is used to produce the chart appearing in
+\cite{IWX19a}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.)
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{cell:} Indicates whether an element is detected by the top cell
+or the bottom cell of the cofiber of $\tau$. \\
+\texttt{0} means that an element is in the image in $\Ext$ 
+of inclusion of the bottom cell.\\
+\texttt{1} means that an element maps non-trivially in $\Ext$ 
+under projection to the top cell.
+
+\column{shift:} Used for display purposes
+in reference to the chart in \cite{IWX19c},
+when more than one element occurs with the same bidegree.
+Lower values correspond to dots on the left.
+
+\column{h1info:}
+Information about special behavior of an $h_1$ extension. \\
+\texttt{?} means that an $h_1$ extension is not known to occur. \\
+\texttt{h} means that an $h_1$ extension is hidden, in the sense
+that its source is detected by the top cell of the cofiber of $\tau$,
+while its target is detected by the bottom cell.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension. \\
+\texttt{loc} means that an element is $h_1$-periodic.
+
+\column{drinfo:}
+Information about a Bockstein differential. \\
+An integer $r$ means that there is a Bockstein $d_r$ differential. \\
+\texttt{?} means that a differential is not known to occur.
+
+\column{drtarget:}
+Value of a Bockstein differential.
+
+\newpage
+
+\file{algNovikov-h1periodic-Einfty.csv}
+Each line of the file corresponds to an element in the
+$E_\infty$-page of the 
+$h_1$-Bockstein spectral sequence that converges to part of the
+algebraic Novikov $E_2$-page.
+This data is used to produce the chart appearing in
+\cite{IWX19a}.
+This file takes the same format as
+\textbf{algNovikov-h1periodic-E0.csv}.
+
+\newpage
+
+\section{Algebraic Novikov spectral sequence}
+
+\file{algNovikov-E2.csv:}
+Each line of the file corresponds to an element in the
+algebraic Novikov $E_2$-page.
+This data is used to produce the chart appearing in \cite{IWX19a}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.)
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{cell:} Indicates whether an element is detected by the top cell
+or the bottom cell of the cofiber of $\tau$. \\
+\texttt{0} means that an element is in the image in $\Ext$ of inclusion of the bottom cell.\\
+\texttt{1} means that an element maps non-trivially in $\Ext$
+under projection to the top cell.
+
+\column{h0info:}
+Information about special behavior of an $h_0$ extension. \\
+\texttt{h} means that an $h_0$ extension is hidden, in the sense
+that its source is detected by the top cell of the cofiber of $\tau$,
+while its target is detected by the bottom cell.
+
+\column{h0target:}
+Value of an $h_0$ extension.  An empty cell indicates
+that there is no $h_0$ extension. \\
+\texttt{loc} means that an element is $h_0$-periodic.
+
+\column{h1info:}
+Information about special behavior of an $h_1$ extension. \\
+\texttt{?} means that an $h_1$ extension is not known to occur. \\
+\texttt{h} means that an $h_1$ extension is hidden, in the sense
+that its source is detected by the top cell of the cofiber of $\tau$,
+while its target is detected by the bottom cell.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension. \\
+\texttt{loc} means that an element is $h_1$-periodic.
+
+\column{h2info:}
+Information about special behavior of an $h_2$ extension. \\
+\texttt{h} means that an $h_2$ extension is hidden, in the sense
+that its source is detected by the top cell of the cofiber of $\tau$,
+while its target is detected by the bottom cell.
+
+\column{h2target:}
+Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension. 
+
+\column{drinfo:}
+Information about an algebraic Novikov differential. \\
+An integer $r$ means that there is $d_r$ differential. \\
+\texttt{?} means that a differential is not known to occur.
+
+\column{drtarget:}
+Value of an algebraic Novikov differential.
+
+\newpage
+
+\file{algNovikov-E3.csv:}
+Each line of the file corresponds to an element in the
+algebraic Novikov $E_3$-page.
+This data is used to produce the chart appearing in \cite{IWX19a}.
+This file takes the same format as
+\textbf{algNovikov-E2.csv}.
+
+\file{algNovikov-E4.csv:}
+Each line of the file corresponds to an element in the
+algebraic Novikov $E_4$-page.
+This data is used to produce the chart appearing in \cite{IWX19a}.
+This file takes the same format as
+\textbf{algNovikov-E2.csv}.
+
+\file{algNovikov-E5.csv:}
+Each line of the file corresponds to an element in the
+algebraic Novikov $E_5$-page.
+This data is used to produce the chart appearing in \cite{IWX19a}.
+This file takes the same format as
+\textbf{algNovikov-E2.csv}.
+
+\newpage
+
+\file{algNovikov-Einfty.csv:}
+Each line of the file corresponds to an element in the
+algebraic Novikov $E_\infty$-page.
+This data is used to produce the chart appearing in \cite{IWX19a}.
+
+\column{name:}  Human-readable name of an element.
+(Beware that naming conventions have changed over time.)
+
+\column{stem:} The stem of an element.  This is the
+horizontal coordinate in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{cell:} Indicates whether an element is detected by the top cell
+or the bottom cell of the cofiber of $\tau$. An empty cell means that
+an element lies beyond the range that has been analyzed. \\
+\texttt{B} means that an element is in the image in homotopy 
+of inclusion of the bottom cell.\\
+\texttt{T} means that an element maps non-trivially in homotopy
+under projection to the top cell. \\
+\texttt{?} means that it is not known whether an element is detected
+by the bottom cell or the top cell. \\
+\texttt{!} means that there is a hidden value of inclusion of the 
+bottom cell or of projection to the top cell.
+
+\column{h0info:}
+Information about special behavior of an $h_0$ extension. \\
+\texttt{h} means that there is a hidden $2$ extension.
+
+\column{h0target:}
+Value of an $h_0$ extension.  An empty cell indicates
+that there is no $h_0$ extension. \\
+\texttt{loc} means that an element is $h_0$-periodic.
+
+\column{h1info:}
+Information about special behavior of an $h_1$ extension. \\
+\texttt{h} means that there is a hidden $\eta$ extension.
+
+\column{h1target:}
+Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension. \\
+\texttt{loc} means that an element is $h_1$-periodic.
+
+\column{h2info:}
+Information about special behavior of an $h_2$ extension. \\
+\texttt{h} means that there is a hidden $\nu$ extension.
+
+\column{h2target:}
+Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension.
+
+\newpage
+
+\file{algNovikov-Einfty-extn.csv:}
+Each line of the file corresponds to a hidden extension by
+$2$, $\eta$, or $\nu$
+in the Adams-Novikov $E_\infty$-page.  This data is used to produce the
+chart appearing in \cite{IWX19a}.  Not all hidden extensions appear
+in this file; only the ones that require curved lines are listed.
+
+\column{source:}  Source of an extension.
+(Beware that naming conventions have changed over time.)
+
+\column{type:} Type of extension. \\
+\texttt{h0} means an extension by $2$. \\
+\texttt{h1} means an extension by $\eta$. \\
+\texttt{h2} means an extension by $\nu$.
+
+\column{stem:} The stem of the source of an extension.  This is the
+horizontal coordinate in a standard Adams-Novikov chart.
+
+\column{Adams filtration:} The Adams-Novikov filtration of 
+the source of an extension.  This is the vertical coordinate in a standard 
+Adams-Novikov chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{target:} Target of an extension.
+
+\column{sourcex, sourcey, targetx, targety}:
+Used for display purposes in reference to the chart in \cite{IWX19a},
+when a curved hidden extension is necessary.
+Gives the tangent vectors at the source and target.
+
+\newpage
+
+\section{Machine generated data}
+
+\file{Adams-motivic-E2-machine.csv:}
+Each line of the file corresponds to an $\F_2[\tau]$-module generator
+of the $\C$-motivic Adams $E_2$-page.
+
+\column{name:}
+An arbitrary name of the form 
+\texttt{\{a-b\}}
+assigned by machine to a generator.
+The value of \texttt{a} is the Adams filtration of the generator,
+while the value of \texttt{b} is an arbitrary number.
+
+\column{stem:} The stem of an element.  This is the horizontal coordinate
+in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{tautorsion:} Indicates the $\tau$ module structure of a
+generator. \\
+\texttt{0} means that an element is $\tau$-periodic. \\
+Any other integer $k$ means that a generator is annihilated by $\tau^k$.
+
+\column{h0info:}
+Information about special behavior of an $h_0$ extension. \\
+An integer $k$ means that an $h_0$ extension
+equals $\tau^k$ times a generator.
+
+\column{h0target:} Value of an $h_0$ extension.  An empty cell indicates
+that there is no $h_0$ extension.
+
+\column{h1info:}
+Information about special behavior of an $h_1$ extension. \\
+An integer $k$ means that an $h_1$ extension
+equals $\tau^k$ times a generator.
+
+\column{h1target:} Value of an $h_1$ extension.  An empty cell indicates
+that there is no $h_1$ extension.
+
+\column{h2info:}
+Information about special behavior of an $h_2$ extension. \\
+An integer $k$ means that an $h_2$ extension
+equals $\tau^k$ times a generator.
+
+\column{h2target:} Value of an $h_2$ extension.  An empty cell indicates
+that there is no $h_2$ extension.
+
+\column{h3info:}
+Information about special behavior of an $h_3$ extension. \\
+An integer $k$ means that an $h_3$ extension
+equals $\tau^k$ times a generator.
+
+\column{h3target:} Value of an $h_3$ extension.  An empty cell indicates
+that there is no $h_3$ extension.
+
+\newpage
+
+\file{algNovikov-machine.csv:}
+Each line of the file corresponds to an element in the
+algebraic Novikov $E_2$-page.
+
+\column{name:}
+An arbitrary name 
+assigned by machine to a generator.
+
+\column{stem:} The stem of an element.  This is the horizontal coordinate
+in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{h0target:} Value of an $h_0$ extension
+in the Adams-Novikov $E_2$-page.  An empty cell indicates
+that there is no $h_0$ extension.
+Beware that these are not extensions in the algebraic Novikov
+$E_2$-page.
+
+\column{h1target:} Value of an $h_1$ extension in the 
+Adams-Novikov $E_2$-page.  An empty cell indicates
+that there is no $h_1$ extension. 
+Beware that these are not extensions in the algebraic Novikov
+$E_2$-page. \\
+\texttt{loc} indicates that an element is $h_1$-periodic.
+
+\column{h2target:} Value of an $h_2$ extension in the Adams-Novikov
+$E_2$-page.  An empty cell indicates
+that there is no $h_2$ extension.
+Beware that these are not extensions in the algebraic Novikov
+$E_2$-page.
+
+\column{h3target:} Value of an $h_3$ extension in the Adams-Novikov
+$E_2$-page.  An empty cell indicates
+that there is no $h_3$ extension.
+Beware that these are not extensions in the algebraic Novikov
+$E_2$-page.
+
+\column{drinfo:}
+Information about an algebraic Novikov differential. \\
+An integer value $r$ indicates a $d_r$ differential.
+
+\column{drvalue:}
+Value of an algebraic Novikov $d_r$ differential.
+
+\newpage
+
+\file{ANSS-cofiber-2-machine.csv:}
+Each line of the file corresponds to an element in the
+Adams-Novikov $E_2$-page for the cofiber of $2$.
+
+\column{name:}
+An arbitrary name 
+assigned by machine to a generator.
+
+\column{cell:} \\
+\texttt{B} indicates that an element lies in the image 
+of the bottom cell.\\
+\texttt{T} indicates that an element projects non-trivially to the
+top cell.
+
+\column{image:} 
+Indicates the pre-image of an element under inclusion of the bottom cell,
+or the value under projection to the top cell.
+
+\column{stem:} The stem of an element.  This is the horizontal coordinate
+in a standard Adams chart.
+
+\column{Adams filtration:} The Adams filtration of 
+an element.  This is the vertical coordinate in a standard 
+Adams chart.
+
+\column{weight:} The motivic weight of an element.
+
+\column{Adams-Novikov filtration:} The Adams-Novikov filtration
+of an element.  This is the vertical coordinate in a standard
+Adams-Novikov chart.
+
+\column{h1target:} Value of an extension by \texttt{[1-0]}, i.e.,
+by $h_1$.
+An empty cell indicates that there is no extension.
+
+\column{h2target:} Value of an extension by \texttt{[1-1]}, i.e., 
+by $h_2$.
+An empty cell indicates that there is no extension.
+
+\column{h3target:} Value of an extension by \texttt{[1-2]}, i.e.,
+by $h_3$.
+An empty cell indicates that there is no extension.
+
+\column{theta2:} Value of an extension by \texttt{v2\^{}1[1-0]}, i.e.,
+by the element
+that maps to $h_2^2$ under projection to the top cell.
+
+\column{theta3:} Value of an extension by \texttt{[1-3]}, i.e.,
+by the element
+that maps to $h_3^2$ under projection to the top cell.
+
+\column{theta4:} Value of an extension by \texttt{[1-4]}, i.e.,
+by the element
+that maps to $h_4^2$ under projection to the top cell.
+
+\column{theta5:} Value of an extension by \texttt{[1-5]}, i.e.,
+by the element
+that maps to $h_5^2$ under projection to the top cell.
+
+\newpage
+
+\file{ANSS-conversion-machine.csv:}
+Converts between arbitrary names for elements in the Adams-Novikov
+$E_2$-page used in the two previous machine-generated files.
+
+\column{ANSS-cofiber-2-machine:}
+Used in the \column{image} column of 
+\file{ANSS-cofiber-2-machine.csv}.
+
+\column{algNovikov-machine:}
+Used in the \column{name} column of
+\file{algNovikov-machine.csv}.
+
+\newpage
+
+\setlength{\parskip}{0pt}
+
+\bibliographystyle{amsalpha}
+\begin{bibdiv}
+\begin{biblist}
+
+\bib{IWX19b}{article}{
+	author={Isaksen, Daniel C.},
+	author={Wang, Guozhen},
+	author={Xu, Zhouli},
+	title={More stable stems},
+	status={preprint},
+	date={2019},
+}
+
+\bib{IWX19a}{article}{
+	author={Isaksen, Daniel C.},
+	author={Wang, Guozhen},
+	author={Xu, Zhouli},
+	title={Classical algebraic Novikov charts and $\C$-motivic Adams charts for the cofiber of $\tau$},
+	date={2019},
+	status={preprint},
+}
+
+\bib{IWX19c}{article}{
+	author={Isaksen, Daniel C.},
+	author={Wang, Guozhen},
+	author={Xu, Zhouli},
+	title={Classical and $\C$-motivic Adams charts},
+	status={preprint},
+	date={2019},
+}
+
+\bib{IWX19d}{article}{
+	author={Isaksen, Daniel C.},
+	author={Wang, Guozhen},
+	author={Xu, Zhouli},
+	title={Adams-Novikov charts},
+	status={preprint},
+	date={2019},
+}
+
+
+\end{biblist}
+\end{bibdiv}
+
+
+\end{document}
+
+
+
+
+
